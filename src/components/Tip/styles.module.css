@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+    margin-left: 420px;
+    margin-right: 420px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 15px;
+    background-color: #EBEBFC;
+}
+
+.container img {
+    height: auto;
+    width: 50px;
+}
+
+.container > div {
+    display: flex;
+    flex-direction: column;
+    color: #4F4FB9;
+}
+
+.container .span1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container .span2 {
+    font-size: 16px;
+}
