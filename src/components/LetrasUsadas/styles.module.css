@@ -32,3 +32,19 @@
     font-weight: bold;
 }
 
+.correta {
+  background-color: #62ff62; 
+  padding: 12px 26px;
+  border-radius: 8px;
+  border: 2px solid #255a19;
+  box-sizing: border-box;
+}
+.errada {
+  background-color: #FFCF62; 
+  padding: 12px 26px;
+  border-radius: 8px;
+  border: 2px solid #691B0A;
+  box-sizing: border-box;
+}
+
+

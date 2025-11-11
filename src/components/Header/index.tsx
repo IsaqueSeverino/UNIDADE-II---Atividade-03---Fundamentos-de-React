@@ -1,18 +1,19 @@
 import styles from "./styles.module.css"
 
 type Props = React.ComponentProps<"header"> & {
-    texto: string,
+    texto: number,
     texto2: string,
-    src: string
+    src: string,
+    reiniciar?: () => void
 }
 
-export function Header({texto, texto2, src, ...rest}: Props) {
+export function Header({texto, texto2, src, reiniciar, ...rest}: Props) {
     return (
         <header className={styles.container} {...rest}>
             <div>
                 <span><span>{texto}</span> {texto2}</span>
 
-                <img src={src} alt="" />
+                <img src={src} alt="" onClick={reiniciar}/>
             </div>
         </header>
     )

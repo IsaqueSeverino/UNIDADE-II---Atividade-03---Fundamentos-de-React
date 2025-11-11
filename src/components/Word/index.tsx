@@ -1,34 +1,17 @@
 import styles from './styles.module.css';
 
 type Props = React.ComponentProps<"div"> & {
-    letra: string,
+    letra: string[],
 }
 
-export function Word({letra, ...rest}: Props) {
-
+export function Word({ letra, ...rest }: Props) {
     return (
         <div className={styles.container} {...rest}>
-            <div>
-                <span>{letra}</span>
-            </div>
-
-            <div>
-                <span>{letra}</span>
-            </div>
-
-            <div>
-                <span>{letra}</span>
-            </div>
-
-            <div>
-                <span>{letra}</span>
-            </div>
-
-            <div>
-                <span>{letra}</span>
-            </div>
-            
+            {letra.map((l, i) => (
+                <div key={i}>
+                    <span>{l}</span>
+                </div>
+            ))}
         </div>
-    )
-
+    );
 }

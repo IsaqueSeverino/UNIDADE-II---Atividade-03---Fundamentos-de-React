@@ -23,4 +23,5 @@
 
 .container div > img {
     height: auto;
+    cursor: pointer;
 }

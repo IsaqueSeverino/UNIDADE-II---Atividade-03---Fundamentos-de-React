@@ -1,5 +1,5 @@
 import "./app.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Logo } from "./components/Logo";
 import { Header } from "./components/Header";
 import { Tip } from "./components/Tip";
@@ -20,6 +20,52 @@ export default function App() {
 
   const [challenge, setChallenge] = useState<Challenge>(getRandomChallenge());
 
+  const [letrasAcertadas, setLetrasAcertadas] = useState<string[]>([]);
+  const [letrasUsadas, setLetrasUsadas] = useState<string[]>([]);
+  const [tentativas, setTentativas] = useState(0);
+  const MAX_TENTATIVAS = 10;
+
+  const [status, setStatus] = useState<'playing' | 'win' | 'lose'>('playing');
+
+  const [palpite, setPalpite] = useState("");
+
+  const letrasParaMostrar = challenge.word.toUpperCase().split('').map(l => letrasAcertadas.includes(l) ? l : '');
+
+  useEffect(() => {
+
+    if (challenge.word.toUpperCase().split('').every(l => letrasAcertadas.includes(l))) {
+      setStatus('win');
+    } else if (tentativas >= MAX_TENTATIVAS) {
+      setStatus('lose');
+    }
+  }, [letrasAcertadas, tentativas, challenge.word]);
+
+  function tentarLetra(letra: string) {
+    letra = letra.toUpperCase();
+    if (letrasUsadas.includes(letra)) {
+      alert("Letra já usada!");
+      return;
+    }
+    setLetrasUsadas([...letrasUsadas, letra]);
+    setTentativas(tentativas + 1);
+    if (challenge.word.toUpperCase().includes(letra)) {
+      setLetrasAcertadas([...letrasAcertadas, letra]);
+    }
+  }
+
+  function handleRestart() {
+    setChallenge(getRandomChallenge());
+    setLetrasUsadas([]);
+    setLetrasAcertadas([]);
+    setTentativas(0);
+    setStatus('playing');
+  }
+
+  function adicionarLetra() {
+    if (!palpite) return;
+    tentarLetra(palpite);
+    setPalpite(""); 
+  }
 
   return (
     <div className="container">
@@ -27,27 +73,31 @@ export default function App() {
         src={logo}
       />
       <Header
-        texto="5"
+        texto={tentativas}
         texto2="de 10 tentativas"
         src={restart}
+        reiniciar={() => handleRestart()}
       />
       <Tip
         texto="Dica"
-        texto2= {challenge.tip}
+        texto2={challenge.tip}
         src={tip}
       />
       <Word
-        letra="R"
+        letra={letrasParaMostrar}
       />
       <Palpite
-        palpite={7}
-        reiniciar={() => setChallenge(getRandomChallenge())}
+        palpite={palpite}
+        setPalpite={setPalpite}
+        adicionarLetra={adicionarLetra}
+        disabled={status !== 'playing'}
       />
 
       <hr />
 
       <LetrasUsadas
-        letra="A"
+        letras={letrasUsadas}
+        letrasCorretas={letrasAcertadas}
       />
 
     </div>

@@ -1,20 +1,19 @@
-.container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
 .container div {
-    background-color: #EBEBFC;
-    padding: 12px 26px;
-    border-radius: 8px;
-    box-sizing: border-box;
+  background-color: #EBEBFC;
+  padding: 12px 26px;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .container div span {
-    font-size: 32px;
-    font-weight: bold;
+  font-size: 32px;
+  font-weight: bold;
 }
-
