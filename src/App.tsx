@@ -1,16 +1,26 @@
 import "./app.css";
+import { useState } from "react";
 import { Logo } from "./components/Logo";
 import { Header } from "./components/Header";
 import { Tip } from "./components/Tip";
 import { Word } from "./components/Word";
 import { Palpite } from "./components/Palpite";
 import { LetrasUsadas } from "./components/LetrasUsadas";
+import { WORDS } from "./utils/words";
+import type { Challenge } from "./utils/words";
 import logo from "./assets/logo.png";
 import restart from "./assets/restart.svg";
 import tip from "./assets/tip.svg";
 
+function getRandomChallenge(): Challenge {
+  return WORDS[Math.floor(Math.random() * WORDS.length)];
+}
 
 export default function App() {
+
+  const [challenge, setChallenge] = useState<Challenge>(getRandomChallenge());
+
+
   return (
     <div className="container">
       <Logo
@@ -23,20 +33,21 @@ export default function App() {
       />
       <Tip
         texto="Dica"
-        texto2="Biblioteca para criar interfaces Web com Javascript."
+        texto2= {challenge.tip}
         src={tip}
       />
       <Word
-        letra = "R"
+        letra="R"
       />
       <Palpite
         palpite={7}
+        reiniciar={() => setChallenge(getRandomChallenge())}
       />
 
       <hr />
 
       <LetrasUsadas
-        letra= "A"
+        letra="A"
       />
 
     </div>

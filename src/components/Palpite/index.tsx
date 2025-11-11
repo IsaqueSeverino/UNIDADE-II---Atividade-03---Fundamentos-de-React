@@ -2,11 +2,12 @@ import styles from './styles.module.css'
 
 type Props = React.ComponentProps<"div"> & {
     palpite: number
+    reiniciar?: () => void
 }
 
-export function Palpite({ palpite }: Props) {
+export function Palpite({ palpite, reiniciar, ...rest }: Props) {
     return (
-        <div className={styles.container}>
+        <div className={styles.container} {...rest}>
             <span>Palpite</span>
 
             <div>
@@ -14,7 +15,7 @@ export function Palpite({ palpite }: Props) {
                     <span>{palpite}</span>
                 </div>
 
-                <button>Confirmar</button>
+                <button onClick={reiniciar}>Confirmar</button>
             </div>
         </div>
     )
