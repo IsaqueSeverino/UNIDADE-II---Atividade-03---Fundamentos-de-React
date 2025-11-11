@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    gap: 15px;
+    margin: 30px;
+    width: 46vw;
+    height: auto;
+}
+
+.container span {
+    font-size: 32px;
+    color: #32325F;
+}
+
+.container div {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.container div div {
+    background-color: #EBEBFC;
+    padding: 12px 26px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.container div div span {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.container div button {
+    background-color: #6A6AF5;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 26px;
+    cursor: pointer;
+}

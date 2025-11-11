@@ -1,25 +1,26 @@
 .container{
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-left: 420px;
-    margin-right: 420px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 50px 60px;
+    gap: 15px;
     padding: 15px;
     background-color: #EBEBFC;
+    width: 46vw;
+    height: auto;
 }
 
 .container img {
     height: auto;
-    width: 50px;
+    width: 3vw;
 }
 
 .container > div {
     display: flex;
     flex-direction: column;
     color: #4F4FB9;
+    gap: 7px;
 }
 
 .container .span1 {
